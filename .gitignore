@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+input/
+output/
+originali/
+filigranate/
+.gemini/
+GEMINI.md
