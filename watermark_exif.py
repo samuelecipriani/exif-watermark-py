@@ -6,7 +6,7 @@ from datetime import datetime
 # --- CONFIGURATION ---
 INPUT_DIR = "input"
 OUTPUT_DIR = "output"
-JPEG_QUALITY = 95
+JPEG_QUALITY = 100
 FONT_SIZE_RATIO = 50  # Denominator: larger value reduces font size
 MARGIN_RATIO = 50     # Denominator: larger value reduces margin
 
