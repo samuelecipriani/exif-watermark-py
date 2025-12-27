@@ -1,5 +1,7 @@
 # EXIF Watermark Python
 
+A Python script to batch-process photos by adding EXIF metadata (camera model, date) as watermarks. Includes a complete guide for running it on Android via Termux.
+
 This project contains a Python script to apply a text watermark to images, based on the capture date and time read from EXIF metadata.
 
 ## Structure
