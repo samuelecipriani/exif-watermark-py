@@ -52,8 +52,9 @@ This section explains how to configure an automated workflow on Android to water
 ### Prerequisites
 
 1.  **Termux** (Download from **F-Droid**, *not* the Play Store).
-2.  **Termux:Widget** (Optional, for a Home screen shortcut).
-3.  **Python** (Installed via Termux).
+2.  **Termux:API** (Download from **F-Droid**, required to update the Android gallery).
+3.  **Termux:Widget** (Optional, for a Home screen shortcut).
+4.  **Python** (Installed via Termux).
 
 ### 1. Environment Installation
 
@@ -66,13 +67,12 @@ pkg update && pkg upgrade
 # Grant access to phone storage (Click "Allow" on the popup)
 termux-setup-storage
 
-# Install Python and system libraries for image/font handling
-pkg install python libjpeg-turbo zlib freetype
+# Install Python, system libraries, and Termux API
+pkg install python libjpeg-turbo zlib freetype termux-api
 
 # Install Pillow (Python library)
 # Note: We use --no-cache-dir to force correct compilation with the installed FreeType
 pip install --no-cache-dir Pillow
-```
 
 ### 2. Configuration (Magic Links)
 
@@ -131,6 +131,9 @@ To run the script with a single tap from your Home screen:
     echo "#!/bin/bash" > ~/.shortcuts/watermark.sh
     echo "cd ~/downloads/exif-watermark-py" >> ~/.shortcuts/watermark.sh
     echo "python watermark_exif.py" >> ~/.shortcuts/watermark.sh
+    # Update Android Media Store so apps like WhatsApp can see the new photos immediately
+    echo "termux-media-scan -r ~/storage/pictures/\"Canon EOS R100\"/watermarked" >> ~/.shortcuts/watermark.sh
+    echo "echo 'Gallery updated!'" >> ~/.shortcuts/watermark.sh
     echo "echo ''" >> ~/.shortcuts/watermark.sh
     echo "read -p 'Press Enter to close...'" >> ~/.shortcuts/watermark.sh
     ```
