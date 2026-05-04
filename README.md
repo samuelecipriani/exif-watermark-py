@@ -131,9 +131,6 @@ To run the script with a single tap from your Home screen:
     echo "#!/bin/bash" > ~/.shortcuts/watermark.sh
     echo "cd ~/downloads/exif-watermark-py" >> ~/.shortcuts/watermark.sh
     echo "python watermark_exif.py" >> ~/.shortcuts/watermark.sh
-    # Update Android Media Store so apps like WhatsApp can see the new photos immediately
-    echo "termux-media-scan -r ~/storage/pictures/\"Canon EOS R100\"/watermarked" >> ~/.shortcuts/watermark.sh
-    echo "echo 'Gallery updated!'" >> ~/.shortcuts/watermark.sh
     echo "echo ''" >> ~/.shortcuts/watermark.sh
     echo "read -p 'Press Enter to close...'" >> ~/.shortcuts/watermark.sh
     ```
