@@ -1,5 +1,6 @@
 import os
 import locale
+import subprocess
 from PIL import Image, ImageDraw, ImageFont, ExifTags
 from datetime import datetime
 
@@ -176,6 +177,18 @@ def main():
     print(f"Successfully processed: {processed_count}")
     print(f"Errors or skipped: {error_count}")
     print("-------------------------")
+
+    # --- ANDROID MEDIA STORE UPDATE ---
+    if processed_count > 0:
+        try:
+            full_path = os.path.abspath(OUTPUT_DIR)
+            subprocess.run(["termux-media-scan", "-r", full_path], check=True, capture_output=True)
+            print("✅ Android Media Store updated. New photos are ready to be shared!")
+        except FileNotFoundError:
+            # Silently ignore if command doesn't exist (e.g., running on PC)
+            pass
+        except Exception as e:
+            print(f"⚠️ Warning: Could not update Android gallery automatically: {e}")
 
 if __name__ == "__main__":
     main()
